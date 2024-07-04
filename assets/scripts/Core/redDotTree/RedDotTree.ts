@@ -27,10 +27,10 @@ export class RedDotTree {
      */
     public registerCallback(redDotPath: string, callback: RedDotCallback): boolean {
         let node = this.rootNode.getNode(redDotPath);
-        if(!node) {
+        if (!node) {
             return false;
         }
-        if(!node.setCallback(callback)) {
+        if (!node.setCallback(callback)) {
             RedDotTreeNode.logError(`RedDotTree: ${redDotPath} override existing callback failed:`)
             return false;
         }
@@ -38,7 +38,7 @@ export class RedDotTree {
     }
 
     /**
-     * 反注册一个红点节点的回调
+     * 注销一个红点节点的回调
      * @param redDotPath 使用"/"作为分隔符的红点节点路径
      */
     public unRegisterCallback(redDotPath: string) {
@@ -52,7 +52,7 @@ export class RedDotTree {
      */
     public getRedDotNum(redDotPath: string): number {
         let node = this.rootNode.getNode(redDotPath);
-        if(!node) {
+        if (!node) {
             return -1;
         }
         return node.redNum;
@@ -66,7 +66,7 @@ export class RedDotTree {
      */
     public changeRedDotNum(redDotPath: string, newValue: number): boolean {
         let node = this.rootNode.getNode(redDotPath);
-        if(node) {
+        if (node) {
             let oldValue = node.redNum;
             node.redNum = newValue;
             return oldValue != node.redNum;

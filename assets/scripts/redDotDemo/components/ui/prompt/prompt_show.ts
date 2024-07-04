@@ -19,32 +19,20 @@ export class prompt_show extends Component {
     protected onLoad(): void {
         // 可以认为这里是全局初始化的地方
         RedDotManager.init();
-        // 添加红点结点
-        RedDotManager.redDotTree.addNode("MainBtn0", false);
-        RedDotManager.redDotTree.addNode("MainBtn1", false);
-        RedDotManager.redDotTree.addNode("MainBtnMenu", true);
-        RedDotManager.redDotTree.addNode("MainBtnMenu/Btn0", false);
-        RedDotManager.redDotTree.addNode("MainBtnMenu/Btn1", false);
     }
 
     start() {
         this.btn_red1.on(Button.EventType.CLICK, () => {
-            RedDotManager.redDotTree.changeRedDotNum("MainBtn0", 0);
+            RedDotManager.checkMainBtn1();
         })
 
         this.btn_red2.on(Button.EventType.CLICK, () => {
-            RedDotManager.redDotTree.changeRedDotNum("MainBtn1", 0);
+            RedDotManager.checkMainBtn2();
         })
 
         this.btn_show.on(Button.EventType.CLICK, () => {
             this.prompt_show.active = !this.prompt_show.active;
         })
-        // 初始化红点数值
-        RedDotManager.redDotTree.changeRedDotNum("MainBtn0", 1);
-        RedDotManager.redDotTree.changeRedDotNum("MainBtn1", 1);
-        RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu/Btn0", 1);
-        RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu/Btn1", 1);
-        // RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu", 1);
 
         //监听
         RedDotManager.redDotTree.registerCallback("MainBtn0", this.onRedDotBullet1.bind(this));

@@ -14,11 +14,12 @@ export class prompt_menu extends Component {
 
     start() {
         this.btn_red1.on(Button.EventType.CLICK, () => {
-            RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu/Btn0", 0);
+            RedDotManager.checkMainMenu(0);
+
         })
 
         this.btn_red2.on(Button.EventType.CLICK, () => {
-            RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu/Btn1", 0);
+            RedDotManager.checkMainMenu(1);
         })
 
         //监听
