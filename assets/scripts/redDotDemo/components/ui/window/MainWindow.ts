@@ -8,23 +8,23 @@ export class MainWindow extends Component {
 
     @property(Node)
     mailWindow: Node;
-    
+
     @property(Node)
     mailRedDot: Node;
-    
+
     @property(Label)
     mailRedDotLabel: Label;
-    
+
     @property(Node)
     bulletsWindow: Node;
-    
+
     @property(Node)
     bullestRedDot: Node;
 
     onLoad() {
         // 可以认为这里是全局初始化的地方
         RedDotManager.init();
-        
+
         // 添加红点结点
         RedDotManager.redDotTree.addNode("MailButton");
         RedDotManager.redDotTree.addNode("BulletsButton", false);
@@ -38,14 +38,14 @@ export class MainWindow extends Component {
         RedDotManager.redDotTree.changeRedDotNum("BulletsButton/Bullet3", 1);
     }
 
-    start () {
+    start() {
         this.mailWindow.active = false;
         this.bulletsWindow.active = false;
         RedDotManager.redDotTree.registerCallback("MailButton", this.onMailRedDotChanged.bind(this));
         RedDotManager.redDotTree.registerCallback("BulletsButton", this.onBulletsRedDotChanged.bind(this));
     }
-   
-    protected onMailButtonClicked (event: Event, customEventData: string) {
+
+    protected onMailButtonClicked(event: Event, customEventData: string) {
         this.mailWindow.active = !this.mailWindow.active;
     }
 
@@ -55,8 +55,8 @@ export class MainWindow extends Component {
         // 红点节点上的红点值更新
         this.mailRedDotLabel.string = redNum.toString();
     }
-    
-    protected onBullestButtonClicked (event: Event, customEventData: string) {
+
+    protected onBullestButtonClicked(event: Event, customEventData: string) {
         this.bulletsWindow.active = !this.bulletsWindow.active;
     }
 

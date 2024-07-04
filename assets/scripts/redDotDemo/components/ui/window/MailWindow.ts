@@ -5,12 +5,12 @@ const { ccclass, property } = _decorator;
 
 @ccclass('MailItem')
 export class MailItem {
-   @property
-   title: string = '';
-   @property
-   content: string = '';
+    @property
+    title: string = '';
+    @property
+    content: string = '';
 }
- 
+
 @ccclass('MailWindow')
 export class MailWindow extends Component {
 
@@ -21,12 +21,12 @@ export class MailWindow extends Component {
     mailList: Node = null;
     @property([MailItem])
     items: MailItem[] = [];
-    
+
     @property(Prefab)
     itemPrefab: Prefab = null!;
 
     private itemIndex: number = 0;
- 
+
     onLoad() {
         for (var i = 0; i < this.items.length; ++i) {
             var item = instantiate(this.itemPrefab);
@@ -38,7 +38,7 @@ export class MailWindow extends Component {
         // this.setCurrentItem(0);
     }
 
-    start () {
+    start() {
         // [3]
     }
 
@@ -47,12 +47,12 @@ export class MailWindow extends Component {
         this.mailContent.string = this.items[index].content;
     }
 
-    protected onBackButtonClicked (event: Event, customEventData: string) {
+    protected onBackButtonClicked(event: Event, customEventData: string) {
         console.log(customEventData); // foobar
         this.node.active = false;
     }
 
-    protected onReadButtonClicked (event: Event, customEventData: string) {
+    protected onReadButtonClicked(event: Event, customEventData: string) {
         // change the reddot state
     }
 }

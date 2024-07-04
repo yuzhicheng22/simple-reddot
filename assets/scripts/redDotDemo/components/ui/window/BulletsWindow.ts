@@ -6,7 +6,7 @@ const { ccclass, property } = _decorator;
 /**
  *
  */
- 
+
 @ccclass('BulletsWindow')
 export class BulletsWindow extends Component {
 
@@ -14,7 +14,7 @@ export class BulletsWindow extends Component {
     bulletButton1: Button;
     @property(Node)
     bullet1RedDot: Node;
-    
+
     @property(Button)
     bulletButton2: Button;
     @property(Node)
@@ -25,7 +25,7 @@ export class BulletsWindow extends Component {
     @property(Node)
     bullet3RedDot: Node;
 
-    start () {
+    start() {
         RedDotManager.redDotTree.registerCallback("BulletsButton/Bullet1", this.onRedDotBullet1.bind(this));
         RedDotManager.redDotTree.registerCallback("BulletsButton/Bullet2", this.onRedDotBullet2.bind(this));
         RedDotManager.redDotTree.registerCallback("BulletsButton/Bullet3", this.onRedDotBullet3.bind(this));
@@ -39,7 +39,7 @@ export class BulletsWindow extends Component {
     private onRedDotBullet1(redNum: number) {
         this.bullet1RedDot.active = redNum > 0;
     }
-    
+
     protected onBulletButton2Clicked() {
         this.bulletButton2.interactable = false;
         RedDotManager.redDotTree.changeRedDotNum("BulletsButton/Bullet2", 0);
