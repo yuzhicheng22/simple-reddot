@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, Node } from 'cc';
+import { _decorator, Button, Component, Label, Node } from 'cc';
 import { RedDotManager } from '../../../logic/RedDotManager';
 const { ccclass, property } = _decorator;
 
@@ -42,11 +42,14 @@ export class prompt_show extends Component {
         // 初始化红点数值
         RedDotManager.redDotTree.changeRedDotNum("MainBtn0", 1);
         RedDotManager.redDotTree.changeRedDotNum("MainBtn1", 1);
+        RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu/Btn0", 1);
+        RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu/Btn1", 1);
         // RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu", 1);
 
         //监听
         RedDotManager.redDotTree.registerCallback("MainBtn0", this.onRedDotBullet1.bind(this));
         RedDotManager.redDotTree.registerCallback("MainBtn1", this.onRedDotBullet2.bind(this));
+        RedDotManager.redDotTree.registerCallback("MainBtnMenu", this.onRedDotBulletMenu.bind(this));
     }
 
     update(deltaTime: number) {
@@ -58,6 +61,12 @@ export class prompt_show extends Component {
     }
     private onRedDotBullet2(redNum: number) {
         this.btn_red2.getChildByName('RedDot').active = redNum > 0;
+    }
+
+    private onRedDotBulletMenu(redNum: number) {
+        const redDot = this.btn_show.getChildByName('RedDot')
+        redDot.active = redNum > 0;
+        redDot.getComponentInChildren(Label).string = redNum.toString();
     }
 }
 
