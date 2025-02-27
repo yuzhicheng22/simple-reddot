@@ -17,12 +17,13 @@ export class prompt_show extends Component {
     public prompt_show: Node = null;
 
     protected onLoad(): void {
-        // 可以认为这里是全局初始化的地方
+        // 全局初始化
         RedDotManager.init();
     }
 
     start() {
         this.btn_red1.on(Button.EventType.CLICK, () => {
+            //事件触发
             RedDotManager.checkMainBtn1();
         })
 
@@ -44,6 +45,10 @@ export class prompt_show extends Component {
 
     }
 
+    /**
+     * 通过回调处理UI红点状态
+     * @param redNum 
+     */
     private onRedDotBullet1(redNum: number) {
         this.btn_red1.getChildByName('RedDot').active = redNum > 0;
     }
@@ -51,6 +56,10 @@ export class prompt_show extends Component {
         this.btn_red2.getChildByName('RedDot').active = redNum > 0;
     }
 
+    /**
+     * 如果红点返回带值，显示红点数量的示例
+     * @param redNum 
+     */
     private onRedDotBulletMenu(redNum: number) {
         const redDot = this.btn_show.getChildByName('RedDot')
         redDot.active = redNum > 0;

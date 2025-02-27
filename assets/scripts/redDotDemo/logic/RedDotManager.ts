@@ -3,11 +3,12 @@ import { RedDotTree } from "../../Core/redDotTree/RedDotTree";
 export class RedDotManager {
     public static redDotTree: RedDotTree = null;
 
+    // 红点定义 
     private static MAINBTN0 = "MainBtn0";
     private static MAINBTN1 = "MainBtn1";
     private static MAINBTNMENU = "MainBtnMenu";
-    private static MAINBTNMENUBTN0 = "MainBtnMenu/Btn0";
-    private static MAINBTNMENUBTN1 = "MainBtnMenu/Btn1";
+    private static MAINBTNMENU_BTN0 = "MainBtnMenu/Btn0";
+    private static MAINBTNMENU_BTN1 = "MainBtnMenu/Btn1";
 
 
     public static init() {
@@ -16,11 +17,11 @@ export class RedDotManager {
         RedDotManager.redDotTree.addNode(RedDotManager.MAINBTN0, false);
         RedDotManager.redDotTree.addNode(RedDotManager.MAINBTN1, false);
         RedDotManager.redDotTree.addNode(RedDotManager.MAINBTNMENU, true);
-        RedDotManager.redDotTree.addNode(RedDotManager.MAINBTNMENUBTN0, false);
-        RedDotManager.redDotTree.addNode(RedDotManager.MAINBTNMENUBTN1, false);
+        RedDotManager.redDotTree.addNode(RedDotManager.MAINBTNMENU_BTN0, false);
+        RedDotManager.redDotTree.addNode(RedDotManager.MAINBTNMENU_BTN1, false);
 
 
-        // 初始化红点数值 仅作为测试参考
+        //? 初始化红点数值 仅作为测试用例
         RedDotManager.redDotTree.changeRedDotNum("MainBtn0", 1);
         RedDotManager.redDotTree.changeRedDotNum("MainBtn1", 1);
         RedDotManager.redDotTree.changeRedDotNum("MainBtnMenu/Btn0", 1);
@@ -28,7 +29,15 @@ export class RedDotManager {
     }
 
     public static checkMainBtn1() {
-        RedDotManager.redDotTree.changeRedDotNum("MainBtn0", 0);
+        //红点判断逻辑
+        let isShow = false;
+        if (true) { //这里使用真实判断逻辑进行赋值
+            isShow = true;
+        }
+        if (isShow) {
+            RedDotManager.redDotTree.changeRedDotNum("MainBtn0", 0);
+        }
+        return isShow;
     }
     public static checkMainBtn2() {
         RedDotManager.redDotTree.changeRedDotNum("MainBtn1", 0);
